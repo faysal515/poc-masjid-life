@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Outer dark green onion dome -->
+  <path d="M100 18 C60 18, 20 58, 20 102 C20 140, 45 168, 100 182 C155 168, 180 140, 180 102 C180 58, 140 18, 100 18 Z" fill="#1A5C38"/>
+  <!-- Inner arch cutout (white) -->
+  <path d="M100 52 C76 52, 50 72, 50 100 L50 165 L150 165 L150 100 C150 72, 124 52, 100 52 Z" fill="#F5F0E8"/>
+  <!-- Gold / orange arch border -->
+  <path d="M100 58 C79 58, 56 76, 56 102 L56 160 L144 160 L144 102 C144 76, 121 58, 100 58 Z" fill="#C9A84C"/>
+  <!-- Inner arch white fill -->
+  <path d="M100 66 C82 66, 64 82, 64 104 L64 156 L136 156 L136 104 C136 82, 118 66, 100 66 Z" fill="#F5F0E8"/>
+  <!-- Small inner dome (green gradient effect) -->
+  <ellipse cx="100" cy="138" rx="22" ry="18" fill="#3D9E65"/>
+  <path d="M78 138 C78 118, 122 118, 122 138 L122 156 L78 156 Z" fill="#3D9E65"/>
+  <ellipse cx="100" cy="120" rx="22" ry="20" fill="#5DBF7A"/>
+  <path d="M82 120 C82 107, 118 107, 118 120 L118 138 L82 138 Z" fill="#4BAF6A"/>
+  <!-- Highlight on small dome -->
+  <ellipse cx="93" cy="114" rx="8" ry="6" fill="#7DD49A" opacity="0.5"/>
+</svg>

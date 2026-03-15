@@ -9,8 +9,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        brand: {
+          950: '#0D2119',
+          900: '#1A3D2B',
+          800: '#1A5C38',
+          700: '#2E7D4F',
+          600: '#3D9E65',
+          100: '#D1FAE5',
+          50:  '#F0F7F2',
+        },
+        gold: {
+          600: '#B45309',
+          500: '#C9A84C',
+          400: '#D4A853',
+          100: '#FEF9C3',
+          50:  '#FFFBEB',
+        },
+        danger: {
+          600: '#DC2626',
+          100: '#FEF2F2',
+          50:  '#FFF5F5',
+        },
+      },
+      fontFamily: {
+        sans: ['var(--font-hind-siliguri)', 'var(--font-inter)', 'sans-serif'],
       },
     },
   },
