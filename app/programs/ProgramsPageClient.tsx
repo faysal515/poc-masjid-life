@@ -5,7 +5,6 @@ import { useLang } from '@/lib/LanguageContext';
 import { t, strings } from '@/lib/i18n';
 import { programs } from '@/lib/mock-data';
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav';
-import SectionHeader from '@/components/ui/SectionHeader';
 
 function formatTaka(n: number): string {
   if (n >= 10000000) return `৳${(n / 10000000).toFixed(2)} কোটি`;

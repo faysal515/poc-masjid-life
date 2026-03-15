@@ -30,11 +30,6 @@ function useCountUp(target: number, duration = 2000, active = false) {
   return count;
 }
 
-function formatTaka(value: number): string {
-  if (value >= 10000000) return `${(value / 10000000).toFixed(1)} কোটি`;
-  if (value >= 100000) return `${(value / 100000).toFixed(1)} লাখ`;
-  return value.toLocaleString();
-}
 
 function MiniStatCard({ value, label, suffix = '' }: { value: string; label: string; suffix?: string }) {
   return (

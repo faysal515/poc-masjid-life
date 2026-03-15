@@ -41,7 +41,6 @@ export default function DonatePageClient() {
   const [activeMethod, setActiveMethod] = useState<'bank' | 'bkash' | 'nagad'>('bank');
 
   const bankChannels = donationChannels.filter((c) => c.type === 'bank');
-  const mobileChannels = donationChannels.filter((c) => c.type === activeMethod);
 
   return (
     <>
