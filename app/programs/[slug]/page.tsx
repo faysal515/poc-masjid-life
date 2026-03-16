@@ -4,7 +4,7 @@ import { programs } from '@/lib/mock-data';
 import ProgramDetailClient from './ProgramDetailClient';
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -12,7 +12,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const program = programs.find((p) => p.slug === params.slug);
+  const { slug } = await params;
+  const program = programs.find((p) => p.slug === slug);
   if (!program) return {};
   return {
     title: `${program.title.en} — Masjid.Life`,
@@ -20,8 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ProgramDetailPage({ params }: Props) {
-  const program = programs.find((p) => p.slug === params.slug);
+export default async function ProgramDetailPage({ params }: Props) {
+  const { slug } = await params;
+  const program = programs.find((p) => p.slug === slug);
   if (!program) notFound();
   return <ProgramDetailClient program={program} />;
 }
