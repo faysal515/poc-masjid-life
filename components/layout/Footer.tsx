@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { Facebook, Phone, MapPin, Mail } from 'lucide-react';
-import { useLang } from '@/lib/LanguageContext';
-import { t, strings } from '@/lib/i18n';
+import Link from "next/link";
+import Image from "next/image";
+import { Facebook, Phone, MapPin, Mail } from "lucide-react";
+import { useLang } from "@/lib/LanguageContext";
+import { t, strings } from "@/lib/i18n";
 
 export default function Footer() {
   const { lang } = useLang();
@@ -27,9 +27,9 @@ export default function Footer() {
               <span className="text-white font-bold text-lg">Masjid.Life</span>
             </Link>
             <p className="text-sm text-brand-200 mb-2">
-              {lang === 'bn'
-                ? 'বাংলাদেশের মানুষের জন্য সুদমুক্ত ঋণ ও সামাজিক সেবা — সম্পূর্ণ স্বেচ্ছাসেবী।'
-                : 'Interest-free loans and social services for the people of Bangladesh — completely voluntary.'}
+              {lang === "bn"
+                ? "বাংলাদেশের মানুষের জন্য সুদমুক্ত ঋণ ও সামাজিক সেবা — সম্পূর্ণ স্বেচ্ছাসেবী।"
+                : "Interest-free loans and social services for the people of Bangladesh — completely voluntary."}
             </p>
             <p className="text-xs text-brand-300">Since 2014</p>
             <div className="flex gap-3 mt-4">
@@ -57,16 +57,16 @@ export default function Footer() {
           {/* Column 2: Quick Links */}
           <div>
             <h3 className="text-white font-semibold mb-4">
-              {lang === 'bn' ? 'দ্রুত লিংক' : 'Quick Links'}
+              {lang === "bn" ? "দ্রুত লিংক" : "Quick Links"}
             </h3>
             <ul className="space-y-2 text-sm">
               {[
-                { href: '/mission',      label: strings.nav.mission },
-                { href: '/transparency', label: strings.nav.transparency },
-                { href: '/programs',     label: strings.nav.programs },
-                { href: '/branches',     label: strings.nav.branches },
-                { href: '/donate',       label: strings.nav.donate },
-                { href: '/contact',      label: strings.nav.contact },
+                { href: "/mission", label: strings.nav.mission },
+                { href: "/transparency", label: strings.nav.transparency },
+                { href: "/programs", label: strings.nav.programs },
+                { href: "/branches", label: strings.nav.branches },
+                { href: "/donate", label: strings.nav.donate },
+                { href: "/contact", label: strings.nav.contact },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
@@ -83,12 +83,12 @@ export default function Footer() {
           {/* Column 3: Contact */}
           <div>
             <h3 className="text-white font-semibold mb-4">
-              {lang === 'bn' ? 'যোগাযোগ' : 'Contact'}
+              {lang === "bn" ? "যোগাযোগ" : "Contact"}
             </h3>
             <div className="space-y-3 text-sm">
               <div>
                 <p className="text-brand-300 text-xs font-medium mb-1">
-                  {lang === 'bn' ? 'প্রধান অফিস' : 'Head Office'}
+                  {lang === "bn" ? "প্রধান অফিস" : "Head Office"}
                 </p>
                 <div className="flex gap-2 text-brand-200">
                   <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0 text-brand-400" />
@@ -101,7 +101,7 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-brand-300 text-xs font-medium mb-1">
-                  {lang === 'bn' ? 'বাংলাদেশ অফিস' : 'Bangladesh Office'}
+                  {lang === "bn" ? "বাংলাদেশ অফিস" : "Bangladesh Office"}
                 </p>
                 <div className="flex gap-2 text-brand-200">
                   <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0 text-brand-400" />
@@ -118,8 +118,15 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-brand-800/50 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-brand-400">
-          <p>© {year} Masjid.Life. {lang === 'bn' ? 'সর্বস্বত্ব সংরক্ষিত।' : 'All rights reserved.'}</p>
-          <p>{lang === 'bn' ? 'ডিজাইন করেছেন: Chandrika' : 'Designed by: Chandrika'}</p>
+          <p>
+            © {year} Masjid.Life.{" "}
+            {lang === "bn" ? "সর্বস্বত্ব সংরক্ষিত।" : "All rights reserved."}
+          </p>
+          <p>
+            {lang === "bn"
+              ? "ডিজাইন করেছেন: ফয়সাল আহমেদ"
+              : "Designed by: Faysal Ahmed"}
+          </p>
         </div>
       </div>
     </footer>
