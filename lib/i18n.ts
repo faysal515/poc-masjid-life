@@ -66,6 +66,25 @@ export const strings = {
       bn: "যোগ্য গ্রহীতাদের মাঝে সুদমুক্তভাবে বিতরণ করা হয়।",
       en: "Distributed interest-free to eligible recipients.",
     },
+    step4t: { bn: "ঋণ ফেরত", en: "Repayment" },
+    step4d: {
+      bn: "ঋণগ্রহীতারা সময়মতো ঋণ ফেরত দেন।",
+      en: "Borrowers repay on time.",
+    },
+    step5t: { bn: "পুনরায় বিতরণ", en: "Recycled" },
+    step5d: {
+      bn: "ফেরত টাকা আবার নতুন ঋণ হিসেবে বিতরণ হয়।",
+      en: "Repaid funds are disbursed as new loans.",
+    },
+    cycleLabel: {
+      bn: "শতভাগ অর্থ পুনরায় ব্যাবহার হয়",
+      en: "100% of the donated money is recycled.",
+    },
+    step1n: { bn: "১", en: "1" },
+    step2n: { bn: "২", en: "2" },
+    step3n: { bn: "৩", en: "3" },
+    step4n: { bn: "৪", en: "4" },
+    step5n: { bn: "৫", en: "5" },
   },
   founder: {
     tag: { bn: "প্রতিষ্ঠাতার কথা", en: "Founder's Message" },
