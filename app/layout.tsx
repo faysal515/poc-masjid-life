@@ -22,6 +22,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://masjid.life'),
   icons: {
     icon: [
       { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
@@ -43,11 +44,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'bn_BD',
     alternateLocale: ['en_US'],
+    images: [{ url: '/og_card.jpg', width: 1024, height: 1024, alt: 'Masjid.Life — সুদমুক্ত ঋণ এবং বহুমুখী সেবা' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Masjid.Life — Interest-Free Loans for Bangladesh',
     description: '340 branches. 50 districts. 8,255 borrowers. 0% fee.',
+    images: ['/og_card.jpg'],
   },
 };
 
