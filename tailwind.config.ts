@@ -11,10 +11,10 @@ const config: Config = {
       colors: {
         brand: {
           950: '#0D2119',
-          900: '#1A3D2B',
-          800: '#1A5C38',
-          700: '#2E7D4F',
-          600: '#3D9E65',
+          900: '#1F5C3A',
+          800: '#2E7D4F',
+          700: '#3D9E65',
+          600: '#52BB7A',
           100: '#D1FAE5',
           50:  '#F0F7F2',
         },
@@ -32,7 +32,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-hind-siliguri)', 'var(--font-inter)', 'sans-serif'],
+        sans: ['var(--font-bornomala)', 'var(--font-inter)', 'sans-serif'],
       },
     },
   },

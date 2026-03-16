@@ -1,12 +1,5 @@
 import type { Metadata } from 'next';
-import HeroSection from '@/components/home/HeroSection';
-import TrustSignalBar from '@/components/home/TrustSignalBar';
-import HowItWorksSection from '@/components/home/HowItWorksSection';
-import FounderSection from '@/components/home/FounderSection';
-import ProgramsGrid from '@/components/home/ProgramsGrid';
-import LiveStatsSection from '@/components/home/LiveStatsSection';
-import TestimonialsSection from '@/components/home/TestimonialsSection';
-import DonateCtaSection from '@/components/home/DonateCtaSection';
+import HomePageClient from './HomePageClient';
 
 export const metadata: Metadata = {
   title: 'Masjid.Life — সুদমুক্ত ঋণ | Interest-Free Loans for Bangladesh',
@@ -19,16 +12,5 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return (
-    <>
-      <HeroSection />
-      <TrustSignalBar />
-      <HowItWorksSection />
-      <FounderSection />
-      <ProgramsGrid />
-      <LiveStatsSection />
-      <TestimonialsSection />
-      <DonateCtaSection />
-    </>
-  );
+  return <HomePageClient />;
 }

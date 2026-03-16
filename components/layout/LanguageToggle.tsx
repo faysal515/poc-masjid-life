@@ -11,7 +11,7 @@ export default function LanguageToggle() {
         onClick={() => setLang('bn')}
         className={`px-3 py-1.5 text-xs font-semibold transition-colors duration-150 focus:outline-none ${
           lang === 'bn'
-            ? 'bg-gold-500 text-brand-900'
+            ? 'bg-gold-500 text-white'
             : 'text-brand-100 hover:text-white'
         }`}
         aria-label="Switch to Bengali"
@@ -22,7 +22,7 @@ export default function LanguageToggle() {
         onClick={() => setLang('en')}
         className={`px-3 py-1.5 text-xs font-semibold transition-colors duration-150 focus:outline-none ${
           lang === 'en'
-            ? 'bg-gold-500 text-brand-900'
+            ? 'bg-gold-500 text-white'
             : 'text-brand-100 hover:text-white'
         }`}
         aria-label="Switch to English"

@@ -34,16 +34,16 @@ export default function HowItWorksSection() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionHeader title={strings.howItWorks.title} align="center" />
 
-        <div className="grid md:grid-cols-3 gap-6 md:gap-4 relative">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-4 relative items-stretch">
           {/* Connecting line on desktop */}
           <div className="hidden md:block absolute top-12 left-1/6 right-1/6 h-0.5 bg-gradient-to-r from-brand-100 via-brand-300 to-brand-100 z-0" style={{ left: '20%', right: '20%' }} />
 
           {steps.map((step, idx) => {
             const Icon = step.icon;
             return (
-              <div key={idx} className="relative z-10">
+              <div key={idx} className="relative z-10 flex flex-col h-full">
                 {/* Step card */}
-                <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow text-center">
+                <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow text-center flex-1 flex flex-col min-h-0">
                   <div className="w-12 h-12 rounded-full bg-brand-800 text-white flex items-center justify-center text-lg font-bold mx-auto mb-4">
                     {step.number}
                   </div>
@@ -53,7 +53,7 @@ export default function HowItWorksSection() {
                   <h3 className="text-lg font-semibold text-slate-800 mb-2">
                     {t(step.title, lang)}
                   </h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">
+                  <p className="text-sm text-slate-500 leading-relaxed flex-1">
                     {t(step.desc, lang)}
                   </p>
                 </div>

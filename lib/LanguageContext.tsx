@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import type { Lang } from './types';
 
 interface LanguageContextType {
@@ -23,14 +23,16 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  const setLang = (newLang: Lang) => {
+  const setLang = useCallback((newLang: Lang) => {
     setLangState(newLang);
     localStorage.setItem('ml-lang', newLang);
     document.documentElement.lang = newLang;
-  };
+  }, []);
+
+  const value = useMemo(() => ({ lang, setLang }), [lang, setLang]);
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   );

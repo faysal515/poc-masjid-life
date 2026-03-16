@@ -80,7 +80,7 @@ export default function DonateCtaSection() {
           <div className="text-center">
             <Link
               href="/donate"
-              className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-brand-900 font-bold px-8 py-3 rounded-xl text-base transition-colors"
+              className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-white font-bold px-8 py-3 rounded-xl text-base transition-colors"
             >
               {t(strings.donate.cta, lang)} →
             </Link>

@@ -135,6 +135,12 @@ export const strings = {
     apply:        { bn: 'আবেদন করুন', en: 'Apply' },
     register:     { bn: 'নিবন্ধন করুন', en: 'Register' },
   },
+  impactNumbers: {
+    heading:      { bn: 'সংখ্যায় আমাদের প্রভাব', en: "Masjid.Life's Impact in Numbers" },
+    loansLabel:   { bn: 'সুদমুক্ত ঋণ বিতরণ',      en: 'Interest-Free Loans Disbursed' },
+    lendersLabel: { bn: 'ঋণ গ্রহীতা',              en: 'Total Lenders' },
+    datePill:     { bn: 'তথ্য সংগ্রহ',              en: 'Data Collected As of March 16, 2026' },
+  },
   common: {
     taka:         { bn: '৳', en: '৳' },
     crore:        { bn: 'কোটি', en: 'Crore' },

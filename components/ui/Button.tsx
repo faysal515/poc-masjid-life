@@ -18,7 +18,7 @@ interface ButtonProps {
 const variantClasses = {
   primary:   'bg-brand-800 hover:bg-brand-700 text-white',
   secondary: 'bg-brand-100 hover:bg-brand-200 text-brand-900',
-  gold:      'bg-gold-500 hover:bg-gold-400 text-brand-900 font-bold',
+  gold:      'bg-gold-500 hover:bg-gold-400 text-white font-bold',
   outline:   'border-2 border-white text-white hover:bg-white hover:text-brand-900',
   ghost:     'text-brand-800 hover:bg-brand-50',
   danger:    'bg-danger-600 hover:bg-red-700 text-white',

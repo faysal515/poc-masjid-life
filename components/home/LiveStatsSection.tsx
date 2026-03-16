@@ -56,7 +56,7 @@ export default function LiveStatsSection() {
           </p>
           <Link
             href="/transparency"
-            className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-brand-900 font-bold px-6 py-3 rounded-xl text-sm transition-colors"
+            className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-white font-bold px-6 py-3 rounded-xl text-sm transition-colors"
           >
             {t(strings.stats.fullDetails, lang)}
           </Link>
