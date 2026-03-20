@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { MapPin } from 'lucide-react';
-import { useLang } from '@/lib/LanguageContext';
-import { t, strings } from '@/lib/i18n';
+import Link from "next/link";
+import Image from "next/image";
+import { MapPin } from "lucide-react";
+import { useLang } from "@/lib/LanguageContext";
+import { t, strings } from "@/lib/i18n";
 
 export default function FounderSection() {
   const { lang } = useLang();

@@ -63,7 +63,7 @@ export default function HowItWorksSection() {
   };
 
   return (
-    <section id="how-it-works" className="bg-white py-20">
+    <section id="how-it-works" className="bg-slate-50 py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionHeader title={strings.howItWorks.title} align="center" />
 
