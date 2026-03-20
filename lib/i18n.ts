@@ -226,7 +226,7 @@ export const strings = {
       bn: "সুদমুক্ত ঋণ বিতরণ",
       en: "Interest-Free Loans Disbursed",
     },
-    lendersLabel: { bn: "ঋণ গ্রহীতা", en: "Total Lenders" },
+    lendersLabel: { bn: "ঋণ দাতা", en: "Total Donors" },
     datePill: { bn: "তথ্য সংগ্রহ", en: "Data Collected As of March 16, 2026" },
   },
   common: {

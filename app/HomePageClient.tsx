@@ -8,10 +8,11 @@ import ProgramsGrid from '@/components/home/ProgramsGrid';
 import LiveStatsSection from '@/components/home/LiveStatsSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import DonateCtaSection from '@/components/home/DonateCtaSection';
+import { MasjidHomeDataProvider } from '@/components/home/MasjidHomeDataProvider';
 
 export default function HomePageClient() {
   return (
-    <>
+    <MasjidHomeDataProvider>
       <HeroSection />
       <ImpactNumbers />
       <HowItWorksSection />
@@ -20,6 +21,6 @@ export default function HomePageClient() {
       <LiveStatsSection />
       <TestimonialsSection />
       <DonateCtaSection />
-    </>
+    </MasjidHomeDataProvider>
   );
 }

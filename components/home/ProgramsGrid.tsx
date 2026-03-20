@@ -1,12 +1,17 @@
 'use client';
 
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { useRef, useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLang } from '@/lib/LanguageContext';
 import { t, strings } from '@/lib/i18n';
-import { programs } from '@/lib/mock-data';
+import { programs as mockPrograms } from '@/lib/mock-data';
+import type { Program } from '@/lib/types';
+import type { MasjidHomeJson } from '@/lib/masjid-home-scrape';
+import { iconAndColorForProgramEnglishName } from '@/lib/program-display';
 import SectionHeader from '@/components/ui/SectionHeader';
+import SectionLoading from '@/components/ui/SectionLoading';
+import { useMasjidHomeData } from '@/components/home/MasjidHomeDataProvider';
 
 function useSlider() {
   const ref = useRef<HTMLDivElement>(null);
@@ -50,8 +55,58 @@ function SliderNav({
   );
 }
 
-/* Shared slide card */
-function ProgramCard({ p, lang }: { p: (typeof programs)[number]; lang: string }) {
+/* Build list from scrape order; English titles from site; BN + body copy from mock when slug matches. */
+function mergeProgramsFromScrape(
+  scraped: MasjidHomeJson['programs'] | undefined,
+): Program[] {
+  const visuals = (titleEn: string) => iconAndColorForProgramEnglishName(titleEn);
+
+  if (!scraped?.length) {
+    return mockPrograms.map((m) => ({
+      ...m,
+      ...visuals(m.title.en),
+    }));
+  }
+
+  const bySlug = Object.fromEntries(mockPrograms.map((p) => [p.slug, p]));
+  const out: Program[] = [];
+
+  for (const sp of scraped) {
+    const m = bySlug[sp.slug];
+    const { icon, color } = visuals(sp.titleEn);
+
+    if (m) {
+      out.push({
+        ...m,
+        icon,
+        color,
+        title: { bn: m.title.bn, en: sp.titleEn },
+        beneficiaryCount: sp.issues ?? m.beneficiaryCount,
+        totalIssued: sp.issuedTaka ?? m.totalIssued,
+        totalRecovered: sp.collectedTaka ?? m.totalRecovered,
+      });
+      continue;
+    }
+
+    out.push({
+      slug: sp.slug,
+      icon,
+      color,
+      title: { bn: sp.titleEn, en: sp.titleEn },
+      desc: {
+        bn: sp.titleEn,
+        en: `Learn more about ${sp.titleEn} on Masjid.Life.`,
+      },
+      beneficiaryCount: sp.issues,
+      totalIssued: sp.issuedTaka,
+      totalRecovered: sp.collectedTaka,
+    });
+  }
+
+  return out.length ? out : mockPrograms.map((m) => ({ ...m, ...visuals(m.title.en) }));
+}
+
+function ProgramCard({ p, lang }: { p: Program; lang: string }) {
   return (
     <Link
       href={`/programs/${p.slug}`}
@@ -73,8 +128,14 @@ function ProgramCard({ p, lang }: { p: (typeof programs)[number]; lang: string }
 
 export default function ProgramsGrid() {
   const { lang } = useLang();
+  const { data, loading } = useMasjidHomeData();
   const desktop = useSlider();
   const mobile  = useSlider();
+
+  const programs = useMemo(
+    () => mergeProgramsFromScrape(data?.programs),
+    [data?.programs],
+  );
 
   const featured = programs[0];
   const rest      = programs.slice(1);
@@ -93,6 +154,10 @@ export default function ProgramsGrid() {
           align="center"
         />
 
+        {loading ? (
+          <SectionLoading className="mt-12" minHeight="22rem" />
+        ) : (
+          <>
         {/* ── Desktop: featured card + slider ── */}
         <div className="hidden lg:grid grid-cols-2 gap-6 mt-12">
 
@@ -135,25 +200,48 @@ export default function ProgramsGrid() {
           </div>
         </div>
 
-        {/* ── Mobile: all programs in horizontal slider with nav ── */}
-        <div className="lg:hidden mt-10 flex flex-col gap-4">
-          {/* Nav row */}
-          <div className="flex justify-end">
-            <SliderNav canLeft={mobile.canLeft} canRight={mobile.canRight} scroll={mobile.scroll} {...navProps} />
-          </div>
-          {/* Track */}
-          <div
-            ref={mobile.ref}
-            onScroll={mobile.update}
-            className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar -mx-4 px-4"
+        {/* ── Mobile: featured (first scraped) full-width, then slider for the rest ── */}
+        <div className="lg:hidden mt-10 flex flex-col gap-6">
+          <Link
+            href={`/programs/${featured.slug}`}
+            className="group bg-brand-900 text-white rounded-2xl p-8 flex flex-col justify-between hover:bg-brand-800 transition-colors duration-200 min-h-[320px]"
           >
-            {programs.map((p) => (
-              <div key={p.slug} className="flex-shrink-0 w-72">
-                <ProgramCard p={p} lang={lang} />
+            <div>
+              <span className="inline-block text-xs font-bold uppercase tracking-widest bg-white/10 text-gold-400 px-3 py-1 rounded-full mb-4">
+                {t(strings.programs.featured, lang)}
+              </span>
+              <div className="text-7xl mb-4 leading-none">{featured.icon}</div>
+              <h3 className="text-2xl font-bold mb-3">{t(featured.title, lang)}</h3>
+              <p className="text-white/70 text-sm leading-relaxed line-clamp-4">
+                {t(featured.desc, lang)}
+              </p>
+            </div>
+            <span className="mt-6 text-gold-400 font-semibold text-sm group-hover:underline">
+              {t(strings.programs.details, lang)}
+            </span>
+          </Link>
+
+          {rest.length > 0 ? (
+            <>
+              <div className="flex justify-end">
+                <SliderNav canLeft={mobile.canLeft} canRight={mobile.canRight} scroll={mobile.scroll} {...navProps} />
               </div>
-            ))}
-          </div>
+              <div
+                ref={mobile.ref}
+                onScroll={mobile.update}
+                className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar -mx-4 px-4"
+              >
+                {rest.map((p) => (
+                  <div key={p.slug} className="flex-shrink-0 w-72">
+                    <ProgramCard p={p} lang={lang} />
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : null}
         </div>
+          </>
+        )}
       </div>
     </section>
   );
